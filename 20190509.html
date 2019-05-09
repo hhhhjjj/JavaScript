@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+</head>
+<script>function regular_expression() {
+    // js 也有正则表达式
+    const str = "Visit W3cSchool!";
+    const n = str.search(/w3cSchool/i);
+    //一般常用就是search和replace这两个
+    document.getElementById("re").innerHTML = n;
+}
+function displayDate(){
+document.getElementById("demo1").innerHTML=Date();
+}
+function myFunction()
+{
+    let x=document.getElementById("demo");  // 找到元素
+    //记得加分号来隔开
+    //js的转义符号也是\
+    x.innerHTML="Hello JavaScript!";    // 改变内容
+    x.style.color = "#ff0000"
+}
+function myFunction1()
+{
+    let x=document.getElementById("input1").value;
+    if(x===""||isNaN(x))
+    // ===是绝对等于的意思
+    //    NaN代表非数字的特殊值，指示某一个值不是数字
+    {
+        alert("不是数字");
+    }
+}
+//if (time<20)
+// {
+//     x="Good day";
+// }
+//还有什么else if这些
+document.write("直接写入HTML输出流");
+a = 5;
+b = 6;
+c = a + b;
+console.log(c);
+//  console.log(c);是写到控制台里面的，用F12进去看
+</script>
+<body>
+<h1>DOM是文件对象模型，是访问HTML元素的标准</h1>
+<h1>可以设置两张图片，通过函数点击来实现切换</h1>
+<p id="demo">js可以改变HTML内容</p>
+<p id="demo1">时间</p>
+<button type="button" onclick="alert('alert')">点我!告警</button>
+<button type="button" onclick="displayDate()">显示日期</button>
+<button type="button" onclick="myFunction()">改变信息</button>
+<label for="input1"></label><input id="input1" type="text">
+<button type="button" onclick="myFunction1()">测试是不是数字或者空格</button>
+<h1>HTML 中的脚本必须位于 script 与 /script标签之间。 脚本可被放置在 HTML 页面的 body 和 head 部分中。
+    script src="myScript.js">/script这样子用外部的js文件也可以</h1>
+<p>搜索字符串 "w3cSchool", 并显示匹配的起始位置：</p>
+<button onclick="regular_expression()">点我</button>
+<p id="re"></p>
+</body>
+</html>
+
