@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="ul">
+    <li>我是第1个li标签</li>
+    <li>我是第2个li标签</li>
+    <li>我是第3个li标签</li>
+    <li>我是第4个li标签</li>
+</ul>
+<input type="button" value="事件冒泡" id="btn">
+<script>
+    var ul = document.getElementById("ul");
+    var btn = document.getElementById("btn");
+    //把本来应该给li注册的事件，委托给ul，只需要给一个元素注册事件
+    //动态创建的li，也会执行预期的效果
+    ul.addEventListener("click", test, false);     //注册点击事件
+    btn.onclick = function () {     //点击同样会有alert
+        var li = document.createElement("li");
+        li.innerHTML = "我是新插入的li标签";
+        ul.appendChild(li);
+    };
+    //函数写在注册事件代码之外，提高性能
+    function test(e) {
+        alert(e.target.innerText);
+    }
+</script>
+<a href="http://www.baidu.com" id="link">点了这个超链接进不了百度</a>
+<script>
+    var link = document.getElementById("link");
+    link.addEventListener("click", fn, false);
+    function fn(e) {
+        e.preventDefault();
+        //若用return false; 不起作用，若用link.onclick = function();return false可以阻止
+    }
+
+//    var reg = /^\w+@\w+\.\w+(\.\w+)?$/;这个可以用来验证正则表达式
+</script>
+<h1>用回车代替tab进下一个文本框</h1>
+<input type="text"><input type="text"><input id="t1" type="text"><input type="text"><input type="text">
+<input type="text"><input type="text"><input type="text"><input type="text"><input type="text">
+<script>
+    var inputs = document.body.getElementsByTagName("input");
+    for(var i = 0, length = inputs.length; i < length ; i++) {
+        var input = inputs[i];
+        //回车键的keyCode是13
+        if(input.type === "text") {
+            //按下回车，让下一个文本框获得焦点
+            input.onkeydown = function (e) {
+                if(e.keyCode === 13) {
+                    this.nextElementSibling.focus();//focus() 他触发了onfocus事件
+                }
+            }
+        }
+    }
+</script>
+<script>
+
+    document.write(location.href);
+
+</script>
+<script>
+
+    document.write("可用宽度：" + screen.availWidth);
+
+</script>
+</body>
+</html>
