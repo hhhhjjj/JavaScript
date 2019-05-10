@@ -49,6 +49,13 @@ function myFunction1()
 //     x="Good day";
 // }
 //还有什么else if这些
+
+// function client() {
+//     return {
+//         clientWidth: window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth || 0;
+//     clientHeight: window.innerHeight || document.body.clientHeitght || document.documentElement.clientHeight || 0;
+// };
+// }
 document.write("直接写入HTML输出流");
 a = 5;
 b = 6;
@@ -56,9 +63,19 @@ c = a + b;
 console.log(c);
 //  console.log(c);是写到控制台里面的，用F12进去看
 //    js的调试工具其实就是浏览器的console，然后可以设置断点这些的，在代码里面加debugger，当然用idea就方便一些了
+const btn = document.getElementById("btn");
+const timerId = setTimeout(function () {
+    alert("定时三秒");
+}, 3000);
+btn.onclick = function () {     //在设置的时间之前（3s内）点击可以取消定时器
+    clearTimeout(timerId);
+};
+
+
 </script>
 <body>
 <h1>DOM是文件对象模型，是访问HTML元素的标准</h1>
+<h1>BOM是浏览器对象模型，提供了独立于内容，与浏览器窗口进行交互的对象</h1>
 <h1>可以设置两张图片，通过函数点击来实现切换</h1>
 <p id="demo">js可以改变HTML内容</p>
 <p id="demo1">时间</p>
@@ -72,6 +89,22 @@ console.log(c);
 <p>搜索字符串 "w3cSchool", 并显示匹配的起始位置：</p>
 <button onclick="regular_expression()">点我</button>
 <p id="re"></p>
+<input type="button" value="closeTimerId" id="btn">
+<p>这个script最好还是放在这个要用的页面元素后面吧，也方便看一些，之前放在前面不能用</p>
+<input type="button" value="倒计时开始10" id="btn1" disabled/>
+<script>
+    var btn1 = document.getElementById("btn1");
+    var num = 10;
+    var timerId1 = setInterval(function () {
+        num--;
+        btn1.value = "到时器开始" + num;
+        if (num === 0) {
+            clearInterval(timerId1);
+            btn1.disabled = false;
+            btn1.value = "同意，可以点了";
+        }
+    },1000);
+</script>
 </body>
 </html>
 
